@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America's Best Doctors | Elite Medical Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #d4af37;
+            --accent-light: #f4e4c1;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Animated Background */
+        .bg-gradient-animate {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Gold Shimmer Effect */
+        .gold-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Card Hover Effects */
+        .doctor-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25);
+        }
+        
+        /* Text Reveal Animation */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 5px;
+        }
+        
+        /* Pulse Ring */
+        .pulse-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        
+        /* Specialty Filter Active State */
+        .filter-btn.active {
+            background: #d4af37;
+            color: #0f172a;
+            transform: scale(1.05);
+        }
+        
+        /* Parallax Container */
+        .parallax-container {
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        
+        /* Stats Counter Animation */
+        .stat-number {
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Navigation Glass Effect */
+        .nav-glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Image Mask */
+        .image-mask {
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+        
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-animate min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="relative">
+                        <i data-lucide="activity" class="w-8 h-8 text-yellow-500 group-hover:scale-110 transition-transform"></i>
+                        <div class="pulse-ring w-8 h-8 top-0 left-0"></div>
+                    </div>
+                    <span class="font-serif text-2xl font-bold text-white tracking-wide">
+                        Medi<span class="text-yellow-500">Elite</span>
+                    </span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-yellow-500 transition-colors text-sm uppercase tracking-wider">Home</a>
+                    <a href="#doctors" class="text-gray-300 hover:text-yellow-500 transition-colors text-sm uppercase tracking-wider">Top Doctors</a>
+                    <a href="#specialties" class="text-gray-300 hover:text-yellow-500 transition-colors text-sm uppercase tracking-wider">Specialties</a>
+                    <a href="#methodology" class="text-gray-300 hover:text-yellow-500 transition-colors text-sm uppercase tracking-wider">Methodology</a>
+                    <a href="#contact" class="px-6 py-2 border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-slate-900 transition-all rounded-full text-sm uppercase tracking-wider">Consult</a>
+                </div>
+                
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-slate-900 shadow-2xl md:hidden z-50 p-8" id="mobileMenu">
+            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex flex-col space-y-6 mt-16">
+                <a href="#home" onclick="toggleMobileMenu()" class="text-2xl font-serif text-white hover:text-yellow-500">Home</a>
+                <a href="#doctors" onclick="toggleMobileMenu()" class="text-2xl font-serif text-white hover:text-yellow-500">Top Doctors</a>
+                <a href="#specialties" onclick="toggleMobileMenu()" class="text-2xl font-serif text-white hover:text-yellow-500">Specialties</a>
+                <a href="#methodology" onclick="toggleMobileMenu()" class="text-2xl font-serif text-white hover:text-yellow-500">Methodology</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/80 to-slate-900"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl float" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal-text mb-6">
+                <span class="inline-block px-4 py-1 rounded-full border border-yellow-500/30 text-yellow-500 text-sm uppercase tracking-widest mb-4">
+                    2024 Edition
+                </span>
+            </div>
+            <h1 class="reveal-text font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                America's <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Best Doctors</span>
+            </h1>
+            <p class="reveal-text text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 font
